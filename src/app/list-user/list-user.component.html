@@ -1,0 +1,60 @@
+<div class="flex flex-col items-center p-5">
+  <h1 class="font-bold">Listado de Usuarios</h1>
+</div>
+
+<div class="flex flex-col overflow-x-auto shadow-md ">
+  <table class=" text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                Id
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Nombres
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Apellidos
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Cedula
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Correo
+              </th>
+              <th scope="col" class="px-6 py-3">
+                teléfono
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Acciones
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let usuario of usuarios" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ usuario.id }}
+              </td>
+              <td class="px-6 py-4">
+                {{ usuario.nombres }}
+              </td>
+              <td class="px-6 py-4">
+                {{ usuario.apellidos }}
+              </td>
+              <td class="px-6 py-4">
+                {{ usuario.cedula }}
+              </td>
+              <td class="px-6 py-4">
+                {{ usuario.correo }}
+              </td>
+              <td class="px-6 py-4">
+                {{ usuario.telefono }}
+              </td>
+              <td class=" py-4">
+                  <button (click)="editUsuario(usuario)"  class="font-medium text-blue-600 dark:text-blue-500 hover:underline px-5">Editar</button>
+                  <button (click)="usuario.id && deleteUsuario(usuario.id)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Eliminar</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <button routerLink="app-create-user" class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-5 border-2 rounded-3xl shadow hover:bg-gray-50 dark:hover:bg-gray-600 fixed bottom-2 right-2">+</button>
+</div>

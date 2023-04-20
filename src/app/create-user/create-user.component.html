@@ -1,0 +1,67 @@
+<div class="flex flex-col justify-center items-center w-full h-screen">
+  <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()" class="w-full max-w-lg ">
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="nombres" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Nombres     
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" formControlName="nombres" id="nombres" placeholder="Jane">
+        <div *ngIf="usuarioForm.get('nombres')?.invalid && (usuarioForm.get('nombres')?.dirty || usuarioForm.get('nombres')?.touched)">
+          <p *ngIf="usuarioForm.get('nombres')?.errors?.['required']" class="text-red-500 text-xs italic">El nombre es requerido.</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="apellidos" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Apellidos     
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" formControlName="apellidos" id="apellidos" placeholder="Doe">
+        <div *ngIf="usuarioForm.get('apellidos')?.invalid && (usuarioForm.get('apellidos')?.dirty || usuarioForm.get('apellidos')?.touched)">
+          <p *ngIf="usuarioForm.get('apellidos')?.errors?.['required']" class="text-red-500 text-xs italic">Los apellidos son requeridos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full px-3">
+        <label for="correo" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Correo
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="email" formControlName="correo" id="correo" placeholder="example@gmail.com">
+        <div *ngIf="usuarioForm.get('correo')?.invalid && (usuarioForm.get('correo')?.dirty || usuarioForm.get('correo')?.touched)">
+          <p *ngIf="usuarioForm.get('correo')?.errors?.['required']" class="text-red-500 text-xs italic">El correo es requerido.</p>
+          <p *ngIf="usuarioForm.get('correo')?.errors?.['email']" class="text-red-500 text-xs italic">El correo debe tener un formato válido.</p>
+        </div>
+        <p *ngIf="correoExists" class="text-red-500 text-xs italic">Este correo ya está en uso.</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="correo" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Cédula     
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" formControlName="cedula" id="cedula" placeholder="104879334">
+        <div *ngIf="usuarioForm.get('cedula')?.invalid && (usuarioForm.get('cedula')?.dirty || usuarioForm.get('cedula')?.touched)">
+          <p *ngIf="usuarioForm.get('cedula')?.errors?.['required']" class="text-red-500 text-xs italic">La cédula es requerida.</p>
+          <p *ngIf="usuarioForm.get('cedula')?.errors?.['pattern']" class="text-red-500 text-xs italic">La cédula debe contener solo números.</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="telefono" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Teléfono     
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" formControlName="telefono" id="telefono" placeholder="3105551234">
+        <div  *ngIf="usuarioForm.get('telefono')?.invalid && (usuarioForm.get('telefono')?.dirty || usuarioForm.get('telefono')?.touched)">
+          <p *ngIf="usuarioForm.get('telefono')?.errors?.['required']" class="text-red-500 text-xs italic">El teléfono es requerido.</p>
+          <p *ngIf="usuarioForm.get('telefono')?.errors?.['pattern']" class="text-red-500 text-xs italic">El teléfono debe contener solo números.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center items-center w-full mt-10">
+      <button class="flex-shrink-0 bg-blue-600 hover:bg-blue-500 border-blue-600 hover:border-blue-500 text-sm border-4 text-white py-1 px-2 rounded" type="submit" [disabled]="usuarioForm.invalid">
+        Guardar
+      </button>
+      <button routerLink="" class="flex-shrink-0 border-transparent border-4 text-blue-600 hover:text-blue-500 text-sm py-1 px-2 rounded" type="button">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
